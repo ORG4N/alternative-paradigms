@@ -4,7 +4,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>38af5352-b7cd-4164-ac22-2b045dac04e5</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>LispInterpreter.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +22,31 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="LispInterpreter.py" />
+    <Compile Include="src\files\evaluation\EvalListener.py" />
+    <Compile Include="src\files\evaluation\EvalVisitor.py" />
+    <Compile Include="src\files\LispLexer.py" />
+    <Compile Include="src\files\LispListener.py" />
+    <Compile Include="src\files\LispParser.py" />
+    <Compile Include="src\files\LispVisitor.py" />
+    <Compile Include="src\files\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\main.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="antlr4\antlr-4.13.0-complete.jar" />
+    <Content Include="grammar\Lisp.g4" />
+    <Content Include="src\files\Lisp.interp" />
+    <Content Include="src\files\Lisp.tokens" />
+    <Content Include="src\files\LispLexer.interp" />
+    <Content Include="src\files\LispLexer.tokens" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="antlr4\" />
+    <Folder Include="grammar\" />
+    <Folder Include="src\" />
+    <Folder Include="src\files\" />
+    <Folder Include="src\files\evaluation\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

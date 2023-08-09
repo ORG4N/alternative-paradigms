@@ -34,10 +34,10 @@ class LispLexer(Lexer):
 
     T__0 = 1
     T__1 = 2
-    T__2 = 3
-    T__3 = 4
-    T__4 = 5
-    T__5 = 6
+    ADD = 3
+    SUB = 4
+    MUL = 5
+    DIV = 6
     INT = 7
     WS = 8
 
@@ -49,10 +49,9 @@ class LispLexer(Lexer):
             "'('", "')'", "'+'", "'-'", "'*'", "'/'" ]
 
     symbolicNames = [ "<INVALID>",
-            "INT", "WS" ]
+            "ADD", "SUB", "MUL", "DIV", "INT", "WS" ]
 
-    ruleNames = [ "T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "INT", 
-                  "WS" ]
+    ruleNames = [ "T__0", "T__1", "ADD", "SUB", "MUL", "DIV", "INT", "WS" ]
 
     grammarFileName = "Lisp.g4"
 

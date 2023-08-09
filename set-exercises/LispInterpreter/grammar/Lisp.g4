@@ -1,10 +1,15 @@
 grammar Lisp;
 
-expr: '(' op expr+ ')'  // Function call
-    | INT              // Integer literal
+expr: expr op=('*' | '/') expr   # MulDiv
+    | expr op=('+' | '-') expr   # AddSub
+    | INT                        # int
+    | '(' expr ')'               # parens
     ;
 
-op: '+' | '-' | '*' | '/';
+ADD: '+';
+SUB: '-';
+MUL: '*';
+DIV: '/';
 
 INT: [0-9]+;
 WS: [ \t\r\n]+ -> skip;
