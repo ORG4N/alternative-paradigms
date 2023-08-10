@@ -1,3 +1,4 @@
+import math 
 from ..LispVisitor import LispVisitor
 from ..LispParser import LispParser
 
@@ -24,3 +25,19 @@ class EvalVisitor(LispVisitor):
             return left + right
         else:
             return left - right
+
+    def visitFuncCall(self, ctx):
+        func = ctx.FUNC().getText()         # Either sin, cos, square, or sqrt
+        value = self.visit(ctx.expr())
+
+        if func == 'sin':
+            return math.sin(value)
+
+        elif func == 'cos':
+            return math.cos(value)
+
+        elif func == 'square':
+            return value * value
+
+        elif func == 'sqrt':
+            return math.sqrt(value)

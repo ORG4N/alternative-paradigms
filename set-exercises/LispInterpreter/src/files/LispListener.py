@@ -35,6 +35,15 @@ class LispListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LispParser#funcCall.
+    def enterFuncCall(self, ctx:LispParser.FuncCallContext):
+        pass
+
+    # Exit a parse tree produced by LispParser#funcCall.
+    def exitFuncCall(self, ctx:LispParser.FuncCallContext):
+        pass
+
+
     # Enter a parse tree produced by LispParser#int.
     def enterInt(self, ctx:LispParser.IntContext):
         pass

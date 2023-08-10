@@ -24,6 +24,11 @@ class LispVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LispParser#funcCall.
+    def visitFuncCall(self, ctx:LispParser.FuncCallContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LispParser#int.
     def visitInt(self, ctx:LispParser.IntContext):
         return self.visitChildren(ctx)
