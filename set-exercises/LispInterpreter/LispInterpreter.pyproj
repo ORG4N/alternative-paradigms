@@ -35,11 +35,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="antlr4\antlr-4.13.0-complete.jar" />
+    <Content Include="gitignore" />
     <Content Include="grammar\Lisp.g4" />
     <Content Include="src\files\Lisp.interp" />
     <Content Include="src\files\Lisp.tokens" />
     <Content Include="src\files\LispLexer.interp" />
     <Content Include="src\files\LispLexer.tokens" />
+    <Content Include="src\tests\tests.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="antlr4\" />
@@ -47,6 +49,7 @@
     <Folder Include="src\" />
     <Folder Include="src\files\" />
     <Folder Include="src\files\evaluation\" />
+    <Folder Include="src\tests\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
