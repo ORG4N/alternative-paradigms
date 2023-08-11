@@ -8,12 +8,12 @@ else:
 # This class defines a complete listener for a parse tree produced by LispParser.
 class LispListener(ParseTreeListener):
 
-    # Enter a parse tree produced by LispParser#parens.
-    def enterParens(self, ctx:LispParser.ParensContext):
+    # Enter a parse tree produced by LispParser#FuncCall.
+    def enterFuncCall(self, ctx:LispParser.FuncCallContext):
         pass
 
-    # Exit a parse tree produced by LispParser#parens.
-    def exitParens(self, ctx:LispParser.ParensContext):
+    # Exit a parse tree produced by LispParser#FuncCall.
+    def exitFuncCall(self, ctx:LispParser.FuncCallContext):
         pass
 
 
@@ -35,20 +35,38 @@ class LispListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by LispParser#funcCall.
-    def enterFuncCall(self, ctx:LispParser.FuncCallContext):
+    # Enter a parse tree produced by LispParser#Parens.
+    def enterParens(self, ctx:LispParser.ParensContext):
         pass
 
-    # Exit a parse tree produced by LispParser#funcCall.
-    def exitFuncCall(self, ctx:LispParser.FuncCallContext):
+    # Exit a parse tree produced by LispParser#Parens.
+    def exitParens(self, ctx:LispParser.ParensContext):
         pass
 
 
-    # Enter a parse tree produced by LispParser#int.
+    # Enter a parse tree produced by LispParser#Let.
+    def enterLet(self, ctx:LispParser.LetContext):
+        pass
+
+    # Exit a parse tree produced by LispParser#Let.
+    def exitLet(self, ctx:LispParser.LetContext):
+        pass
+
+
+    # Enter a parse tree produced by LispParser#ID.
+    def enterID(self, ctx:LispParser.IDContext):
+        pass
+
+    # Exit a parse tree produced by LispParser#ID.
+    def exitID(self, ctx:LispParser.IDContext):
+        pass
+
+
+    # Enter a parse tree produced by LispParser#Int.
     def enterInt(self, ctx:LispParser.IntContext):
         pass
 
-    # Exit a parse tree produced by LispParser#int.
+    # Exit a parse tree produced by LispParser#Int.
     def exitInt(self, ctx:LispParser.IntContext):
         pass
 

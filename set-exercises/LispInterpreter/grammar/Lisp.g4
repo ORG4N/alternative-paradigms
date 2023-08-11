@@ -1,11 +1,14 @@
 grammar Lisp;
 
-expr: expr op=('*' | '/') expr   # MulDiv
-    | expr op=('+' | '-') expr   # AddSub
-    | INT                        # int
-    | '(' expr ')'               # parens
-    | FUNC '(' expr ')'          # funcCall
+expr: expr op=('*' | '/') expr          # MulDiv
+    | expr op=('+' | '-') expr          # AddSub
+    | INT                               # Int
+    | ID                                # ID
+    | '(' expr ')'                      # Parens
+    | FUNC '(' expr ')'                 # FuncCall
+    | LET '(' ID '=' expr ')' expr      # Let
     ;
+
 
 ADD: '+';
 SUB: '-';
@@ -13,6 +16,7 @@ MUL: '*';
 DIV: '/';
 
 FUNC: 'sin' | 'cos' | 'square' | 'sqrt';
-
-INT: [0-9]+;
+LET: 'let';
+ID: [a-zA-Z]+;
+INT: ('+' | '-')? [0-9]+;
 WS: [ \t\r\n]+ -> skip;
