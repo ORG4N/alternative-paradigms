@@ -9,18 +9,13 @@ else:
 
 class LispVisitor(ParseTreeVisitor):
 
-    # Visit a parse tree produced by LispParser#FuncCall.
-    def visitFuncCall(self, ctx:LispParser.FuncCallContext):
+    # Visit a parse tree produced by LispParser#Arithmetic.
+    def visitArithmetic(self, ctx:LispParser.ArithmeticContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by LispParser#MulDiv.
-    def visitMulDiv(self, ctx:LispParser.MulDivContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by LispParser#AddSub.
-    def visitAddSub(self, ctx:LispParser.AddSubContext):
+    # Visit a parse tree produced by LispParser#Int.
+    def visitInt(self, ctx:LispParser.IntContext):
         return self.visitChildren(ctx)
 
 
@@ -29,18 +24,8 @@ class LispVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by LispParser#Let.
-    def visitLet(self, ctx:LispParser.LetContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by LispParser#ID.
-    def visitID(self, ctx:LispParser.IDContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by LispParser#Int.
-    def visitInt(self, ctx:LispParser.IntContext):
+    # Visit a parse tree produced by LispParser#op.
+    def visitOp(self, ctx:LispParser.OpContext):
         return self.visitChildren(ctx)
 
 

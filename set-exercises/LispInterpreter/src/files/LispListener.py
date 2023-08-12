@@ -8,30 +8,21 @@ else:
 # This class defines a complete listener for a parse tree produced by LispParser.
 class LispListener(ParseTreeListener):
 
-    # Enter a parse tree produced by LispParser#FuncCall.
-    def enterFuncCall(self, ctx:LispParser.FuncCallContext):
+    # Enter a parse tree produced by LispParser#Arithmetic.
+    def enterArithmetic(self, ctx:LispParser.ArithmeticContext):
         pass
 
-    # Exit a parse tree produced by LispParser#FuncCall.
-    def exitFuncCall(self, ctx:LispParser.FuncCallContext):
-        pass
-
-
-    # Enter a parse tree produced by LispParser#MulDiv.
-    def enterMulDiv(self, ctx:LispParser.MulDivContext):
-        pass
-
-    # Exit a parse tree produced by LispParser#MulDiv.
-    def exitMulDiv(self, ctx:LispParser.MulDivContext):
+    # Exit a parse tree produced by LispParser#Arithmetic.
+    def exitArithmetic(self, ctx:LispParser.ArithmeticContext):
         pass
 
 
-    # Enter a parse tree produced by LispParser#AddSub.
-    def enterAddSub(self, ctx:LispParser.AddSubContext):
+    # Enter a parse tree produced by LispParser#Int.
+    def enterInt(self, ctx:LispParser.IntContext):
         pass
 
-    # Exit a parse tree produced by LispParser#AddSub.
-    def exitAddSub(self, ctx:LispParser.AddSubContext):
+    # Exit a parse tree produced by LispParser#Int.
+    def exitInt(self, ctx:LispParser.IntContext):
         pass
 
 
@@ -44,30 +35,12 @@ class LispListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by LispParser#Let.
-    def enterLet(self, ctx:LispParser.LetContext):
+    # Enter a parse tree produced by LispParser#op.
+    def enterOp(self, ctx:LispParser.OpContext):
         pass
 
-    # Exit a parse tree produced by LispParser#Let.
-    def exitLet(self, ctx:LispParser.LetContext):
-        pass
-
-
-    # Enter a parse tree produced by LispParser#ID.
-    def enterID(self, ctx:LispParser.IDContext):
-        pass
-
-    # Exit a parse tree produced by LispParser#ID.
-    def exitID(self, ctx:LispParser.IDContext):
-        pass
-
-
-    # Enter a parse tree produced by LispParser#Int.
-    def enterInt(self, ctx:LispParser.IntContext):
-        pass
-
-    # Exit a parse tree produced by LispParser#Int.
-    def exitInt(self, ctx:LispParser.IntContext):
+    # Exit a parse tree produced by LispParser#op.
+    def exitOp(self, ctx:LispParser.OpContext):
         pass
 
 
