@@ -19,13 +19,28 @@ class LispVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LispParser#ID.
+    def visitID(self, ctx:LispParser.IDContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LispParser#Parens.
     def visitParens(self, ctx:LispParser.ParensContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by LispParser#op.
-    def visitOp(self, ctx:LispParser.OpContext):
+    # Visit a parse tree produced by LispParser#FuncCall.
+    def visitFuncCall(self, ctx:LispParser.FuncCallContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LispParser#Let.
+    def visitLet(self, ctx:LispParser.LetContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LispParser#var.
+    def visitVar(self, ctx:LispParser.VarContext):
         return self.visitChildren(ctx)
 
 

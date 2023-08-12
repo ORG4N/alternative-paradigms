@@ -4,10 +4,12 @@ from ..LispParser import LispParser
 
 class EvalVisitor(LispVisitor):
 
+    def __init__(self):
+        self.variables = {}
 
     # Basic Arithmetic: Addition, Subtraction, Multiplication, Division
     def visitArithmetic(self, ctx):
-        op = ctx.op().getText()                             # Get the operator string ('+' or '-' or '*' or '/')
+        op = ctx.OP().getText()                             # Get the operator string ('+' or '-' or '*' or '/')
         args = [self.visit(expr) for expr in ctx.expr()]    # Get the values within the expression
 
         if op == '+':                                       # Addition:
@@ -36,3 +38,43 @@ class EvalVisitor(LispVisitor):
 
     def visitParens(self, ctx):
         return self.visit(ctx.expr())
+
+
+    def visitFuncCall(self, ctx):
+        func = ctx.FUNC().getText()         # Either sin, cos, square, or sqrt
+        value = self.visit(ctx.expr())
+
+        if func == 'sin':
+            return math.sin(value)
+
+        elif func == 'cos':
+            return math.cos(value)
+
+        elif func == 'square':
+            return value * value
+
+        elif func == 'sqrt':
+            return math.sqrt(value)
+
+
+    def visitLet(self, ctx):
+        bindings = ctx.var()
+        for var in bindings:
+            name = var.ID().getText()
+            value =  self.visit(var.expr())
+            self.variables[name] = value
+
+            print(value, " has been assigned to ", name)
+        return self.visit(ctx.expr())
+
+    def visitVar(self, ctx):
+        var = ctx.ID().getText()
+        value = self.visit(ctx.expr())
+        return (var, value)
+
+    def visitID(self, ctx):
+        var = ctx.ID().getText()
+        if var in self.variables:
+            return self.variables[var]
+        else:
+            raise Exception(f"Variable '{var}' is not defined.")

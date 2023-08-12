@@ -26,6 +26,15 @@ class LispListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LispParser#ID.
+    def enterID(self, ctx:LispParser.IDContext):
+        pass
+
+    # Exit a parse tree produced by LispParser#ID.
+    def exitID(self, ctx:LispParser.IDContext):
+        pass
+
+
     # Enter a parse tree produced by LispParser#Parens.
     def enterParens(self, ctx:LispParser.ParensContext):
         pass
@@ -35,12 +44,30 @@ class LispListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by LispParser#op.
-    def enterOp(self, ctx:LispParser.OpContext):
+    # Enter a parse tree produced by LispParser#FuncCall.
+    def enterFuncCall(self, ctx:LispParser.FuncCallContext):
         pass
 
-    # Exit a parse tree produced by LispParser#op.
-    def exitOp(self, ctx:LispParser.OpContext):
+    # Exit a parse tree produced by LispParser#FuncCall.
+    def exitFuncCall(self, ctx:LispParser.FuncCallContext):
+        pass
+
+
+    # Enter a parse tree produced by LispParser#Let.
+    def enterLet(self, ctx:LispParser.LetContext):
+        pass
+
+    # Exit a parse tree produced by LispParser#Let.
+    def exitLet(self, ctx:LispParser.LetContext):
+        pass
+
+
+    # Enter a parse tree produced by LispParser#var.
+    def enterVar(self, ctx:LispParser.VarContext):
+        pass
+
+    # Exit a parse tree produced by LispParser#var.
+    def exitVar(self, ctx:LispParser.VarContext):
         pass
 
 

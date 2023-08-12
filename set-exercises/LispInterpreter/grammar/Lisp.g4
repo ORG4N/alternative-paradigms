@@ -1,16 +1,24 @@
 grammar Lisp;
 
-expr: '(' op expr+ ')'  # Arithmetic
-    | INT               # Int
-    | '(' expr ')'      # Parens
+expr: '(' OP expr+ ')'                      # Arithmetic
+    | INT                                   # Int
+    | ID                                    # ID
+    | '(' expr ')'                          # Parens
+    | '('FUNC expr ')'                      # FuncCall
+    | '(' LET '(' var+ ')' expr ')'         # Let
     ;
 
-op: ADD | SUB | MUL | DIV;
+var: '(' ID expr ')';
+
+OP: ADD | SUB | MUL | DIV;
+FUNC: 'sin' | 'cos' | 'square' | 'sqrt' ;
+LET: 'let';
 
 ADD: '+';
 SUB: '-';
 MUL: '*';
 DIV: '/';
 
+ID: [a-zA-Z]+;
 INT: ('+' | '-')? [0-9]+;
 WS: [ \t\r\n]+ -> skip;
