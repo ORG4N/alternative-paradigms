@@ -40,10 +40,6 @@ class EvalVisitor(LispVisitor):
         return [self.visit(expr) for expr in ctx.expr()]
 
 
-    def visitParens(self, ctx):
-        return self.visit(ctx.expr())
-
-
     def visitFuncCall(self, ctx):
         func = ctx.FUNC().getText()         # String name of function (FUNC: 'sin' | 'cos' | 'square' | 'sqrt' | 'car' | 'cdr' | 'quote' | 'atom';)
         value = self.visit(ctx.expr())
@@ -75,7 +71,7 @@ class EvalVisitor(LispVisitor):
                 else:
                     return list_[1:]
             else:
-                raise Exception("Argument to 'car' must be a list.")
+                raise Exception("Argument to 'cdr' must be a list.")
 
         elif func == 'quote':
             return ctx.expr().getText()

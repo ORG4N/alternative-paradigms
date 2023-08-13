@@ -44,15 +44,6 @@ class LispListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by LispParser#Parens.
-    def enterParens(self, ctx:LispParser.ParensContext):
-        pass
-
-    # Exit a parse tree produced by LispParser#Parens.
-    def exitParens(self, ctx:LispParser.ParensContext):
-        pass
-
-
     # Enter a parse tree produced by LispParser#FuncCall.
     def enterFuncCall(self, ctx:LispParser.FuncCallContext):
         pass

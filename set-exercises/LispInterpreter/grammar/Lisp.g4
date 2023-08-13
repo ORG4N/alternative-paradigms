@@ -3,8 +3,7 @@ grammar Lisp;
 expr: '(' OP expr+ ')'                      # Arithmetic
     | INT                                   # Int
     | ID                                    # ID
-    | '(' expr+ ')'                         # List
-    | '(' expr ')'                          # Parens
+    | '(' expr* ')'                         # List
     | '(' FUNC expr ')'                     # FuncCall
     | '(' EQ_FUNC expr expr ')'             # FuncEq
     | '(' COND_FUNC cond_clause+ ')'        # FuncCond
