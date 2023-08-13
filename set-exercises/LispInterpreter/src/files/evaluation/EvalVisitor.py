@@ -1,4 +1,4 @@
-import math 
+import math
 from ..LispVisitor import LispVisitor
 from ..LispParser import LispParser
 
@@ -87,6 +87,9 @@ class EvalVisitor(LispVisitor):
             else:
                 return 't'  
 
+        elif func == 'squre':
+            print("yooyoyo")
+
     # Eq Function has its own seperate visit method because arguments are different from the other functions.
     # This function requires exactly two arguments and will evaluates them and sees if their results are equal.
     def visitFuncEq(self, ctx):                 # (eq arg1 arg2) where arg1 and arg2 can be any expression
@@ -134,3 +137,10 @@ class EvalVisitor(LispVisitor):
             return self.variables[var]                              # If the variables does exist then the value is returned.
         else:
             raise Exception(f"Variable '{var}' is not defined.")
+
+    def visitLoad(self, ctx):
+        file_name = "src/" + ctx.STRING().getText()                 # Get the file name from the context
+        with open(file_name, 'r') as file:
+            script = file.read()                                    # Read the contents of the script file
+
+        return ["File", script]

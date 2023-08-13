@@ -46,7 +46,12 @@ def main(*args):
     tree = interpreter(expression)      
     result = evaluate(tree)
 
-    print(expression, " = ", result)
+    # Insufficient way of parsing the read contents of the load file function
+    if isinstance(result, (list, tuple)):       # Determines if the input is a list
+        if result[0] == "File":                 # If the first element of the list is "File" then we will get the second element of the list and use the contents
+            result = main(result[1])            # as an expression and feed it back through the interpreter.
+    else:
+        print(expression, " = ",result)
 
     return result
 

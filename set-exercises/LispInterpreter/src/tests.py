@@ -173,6 +173,12 @@ class TestMain(unittest.TestCase):
         result = main("(eq (+ 2 2) (- 10 6))")        
         self.assertEqual(result, "t") 
 
+    # Tests for: 6. Load function to interpret code written within a file calle 'file'
+
+    def test_loadFile(self):                # Load the file file and it should return the result of the expression within.
+        result = main("(load file.txt)")    # File contains the expression: (+ 3 3)    
+        self.assertEqual(result, 6) 
+
 # In command line run: python src/test_main.py
 if __name__ == '__main__':
     unittest.main()

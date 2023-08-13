@@ -8,6 +8,15 @@ else:
 # This class defines a complete listener for a parse tree produced by LispParser.
 class LispListener(ParseTreeListener):
 
+    # Enter a parse tree produced by LispParser#program.
+    def enterProgram(self, ctx:LispParser.ProgramContext):
+        pass
+
+    # Exit a parse tree produced by LispParser#program.
+    def exitProgram(self, ctx:LispParser.ProgramContext):
+        pass
+
+
     # Enter a parse tree produced by LispParser#Arithmetic.
     def enterArithmetic(self, ctx:LispParser.ArithmeticContext):
         pass
@@ -80,6 +89,15 @@ class LispListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LispParser#Load.
+    def enterLoad(self, ctx:LispParser.LoadContext):
+        pass
+
+    # Exit a parse tree produced by LispParser#Load.
+    def exitLoad(self, ctx:LispParser.LoadContext):
+        pass
+
+
     # Enter a parse tree produced by LispParser#var.
     def enterVar(self, ctx:LispParser.VarContext):
         pass
@@ -95,6 +113,15 @@ class LispListener(ParseTreeListener):
 
     # Exit a parse tree produced by LispParser#cond_clause.
     def exitCond_clause(self, ctx:LispParser.Cond_clauseContext):
+        pass
+
+
+    # Enter a parse tree produced by LispParser#parameters.
+    def enterParameters(self, ctx:LispParser.ParametersContext):
+        pass
+
+    # Exit a parse tree produced by LispParser#parameters.
+    def exitParameters(self, ctx:LispParser.ParametersContext):
         pass
 
 

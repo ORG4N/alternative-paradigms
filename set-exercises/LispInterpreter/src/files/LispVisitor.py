@@ -9,6 +9,11 @@ else:
 
 class LispVisitor(ParseTreeVisitor):
 
+    # Visit a parse tree produced by LispParser#program.
+    def visitProgram(self, ctx:LispParser.ProgramContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LispParser#Arithmetic.
     def visitArithmetic(self, ctx:LispParser.ArithmeticContext):
         return self.visitChildren(ctx)
@@ -49,6 +54,11 @@ class LispVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LispParser#Load.
+    def visitLoad(self, ctx:LispParser.LoadContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LispParser#var.
     def visitVar(self, ctx:LispParser.VarContext):
         return self.visitChildren(ctx)
@@ -56,6 +66,11 @@ class LispVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by LispParser#cond_clause.
     def visitCond_clause(self, ctx:LispParser.Cond_clauseContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LispParser#parameters.
+    def visitParameters(self, ctx:LispParser.ParametersContext):
         return self.visitChildren(ctx)
 
 
