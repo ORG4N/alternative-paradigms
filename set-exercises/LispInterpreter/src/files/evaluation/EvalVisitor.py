@@ -36,12 +36,16 @@ class EvalVisitor(LispVisitor):
         return int(ctx.INT().getText())
 
 
+    def visitList(self, ctx):
+        return [self.visit(expr) for expr in ctx.expr()]
+
+
     def visitParens(self, ctx):
         return self.visit(ctx.expr())
 
 
     def visitFuncCall(self, ctx):
-        func = ctx.FUNC().getText()         # Either sin, cos, square, or sqrt
+        func = ctx.FUNC().getText()         # String name of function (FUNC: 'sin' | 'cos' | 'square' | 'sqrt' | 'car' | 'cdr' | 'quote' | 'atom';)
         value = self.visit(ctx.expr())
 
         if func == 'sin':
@@ -56,6 +60,52 @@ class EvalVisitor(LispVisitor):
         elif func == 'sqrt':
             return math.sqrt(value)
 
+        elif func == 'car':
+            list_ = self.visit(ctx.expr())
+            if isinstance(list_, list):
+                return list_[0]
+            else:
+                raise Exception("Argument to 'car' must be a list.")
+
+        elif func == 'cdr':
+            list_ = self.visit(ctx.expr())
+            if isinstance(list_, list):
+                if len(list_) == 1:
+                    return 'nil'
+                else:
+                    return list_[1:]
+            else:
+                raise Exception("Argument to 'car' must be a list.")
+
+        elif func == 'quote':
+            return ctx.expr().getText()
+
+        elif func == 'atom':
+            expr = self.visit(ctx.expr())
+            if isinstance(expr, list):
+                return 'f'
+            else:
+                return 't'
+
+
+    def visitFuncEq(self, ctx):                 # (eq arg1 arg2) where arg1 and arg2 can be any expression
+        arg1 = self.visit(ctx.expr(0))
+        arg2 = self.visit(ctx.expr(1))
+        if arg1 == arg2:                        # If both expressions are the same, return T aka True
+            return 't'
+        else:                                   # Else expressions are not the same, return F aka False
+            return 'f'
+
+
+    def visitFuncCond(self, ctx):                 
+        clauses = ctx.cond_clause()
+        for clause in clauses:
+            condition = self.visit(clause.expr(0))
+            action = self.visit(clause.expr(1))
+            if condition != 'nil':
+                return action
+        return 'nil'
+
 
     def visitLet(self, ctx):
         bindings = ctx.var()
@@ -64,7 +114,6 @@ class EvalVisitor(LispVisitor):
             value =  self.visit(var.expr())
             self.variables[name] = value
 
-            print(value, " has been assigned to ", name)
         return self.visit(ctx.expr())
 
     def visitVar(self, ctx):

@@ -35,6 +35,15 @@ class LispListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LispParser#List.
+    def enterList(self, ctx:LispParser.ListContext):
+        pass
+
+    # Exit a parse tree produced by LispParser#List.
+    def exitList(self, ctx:LispParser.ListContext):
+        pass
+
+
     # Enter a parse tree produced by LispParser#Parens.
     def enterParens(self, ctx:LispParser.ParensContext):
         pass
@@ -53,6 +62,24 @@ class LispListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LispParser#FuncEq.
+    def enterFuncEq(self, ctx:LispParser.FuncEqContext):
+        pass
+
+    # Exit a parse tree produced by LispParser#FuncEq.
+    def exitFuncEq(self, ctx:LispParser.FuncEqContext):
+        pass
+
+
+    # Enter a parse tree produced by LispParser#FuncCond.
+    def enterFuncCond(self, ctx:LispParser.FuncCondContext):
+        pass
+
+    # Exit a parse tree produced by LispParser#FuncCond.
+    def exitFuncCond(self, ctx:LispParser.FuncCondContext):
+        pass
+
+
     # Enter a parse tree produced by LispParser#Let.
     def enterLet(self, ctx:LispParser.LetContext):
         pass
@@ -68,6 +95,15 @@ class LispListener(ParseTreeListener):
 
     # Exit a parse tree produced by LispParser#var.
     def exitVar(self, ctx:LispParser.VarContext):
+        pass
+
+
+    # Enter a parse tree produced by LispParser#cond_clause.
+    def enterCond_clause(self, ctx:LispParser.Cond_clauseContext):
+        pass
+
+    # Exit a parse tree produced by LispParser#cond_clause.
+    def exitCond_clause(self, ctx:LispParser.Cond_clauseContext):
         pass
 
 
